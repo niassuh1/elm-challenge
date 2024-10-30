@@ -1,0 +1,56 @@
+<header class="sticky top-0 w-full bg-white border-b">
+  <nav
+    class="p-4 w-full max-w-screen-xl mx-auto flex items-center gap-2 justify-between"
+  >
+    <div class="md:hidden">
+      <p-drawer
+        position="right"
+        (onHide)="hideDrawer()"
+        [visible]="drawerVisible"
+      >
+        <ul class="flex flex-col gap-4 mt-3 w-full">
+          @for (item of navItems; track $index) {
+          <li class="flex w-full">
+            <a
+              class="p-2 hover:bg-surface-100 flex w-full rounded-md transition-all ease-in-out"
+              [routerLink]="item.href"
+              routerLinkActive=" bg-primary hover:!bg-primary text-white"
+              >{{ item.label }}</a
+            >
+          </li>
+          }
+        </ul>
+      </p-drawer>
+      <p-button
+        outlined="true"
+        [text]="true"
+        severity="secondary"
+        (onClick)="toggleDrawer()"
+      >
+        <ng-template pTemplate="icon">
+          <ng-icon name="heroBars3" />
+        </ng-template>
+      </p-button>
+    </div>
+
+    <div class="text-primary-500 font-medium w-0">Logo</div>
+    <ul class="hidden md:flex gap-4">
+      @for (item of navItems; track $index) {
+      <li>
+        <a
+          class="p-2"
+          [routerLink]="item.href"
+          routerLinkActive="bg-primary text-white rounded-md"
+          >{{ item.label }}</a
+        >
+      </li>
+      }
+    </ul>
+    <a routerLink="/login">
+      <p-button size="small">
+        تسجيل دخول
+        <ng-icon name="heroChevronLeft" />
+      </p-button>
+    </a>
+  </nav>
+</header>
