@@ -16,40 +16,40 @@
       </div>
       <div class="flex flex-col gap-2">
         <label for="id">رقم الهوية</label>
-        <input
-          size="small"
-          placeholder="رقم الهوية الخاصة بك"
-          id="id"
-          pInputText
-        />
+        <input placeholder="رقم الهوية الخاصة بك" id="id" pInputText />
       </div>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-2 w-full">
         <label for="passowrd">كلمة المرور</label>
-        <div class="flex items-center gap-2">
-          <input
-            class="flex-1"
-            size="small"
-            [type]="passwordVisible ? 'text' : 'password'"
-            [placeholder]="passwordVisible ? 'كلمة المرور' : '********'"
-            id="passowrd"
-            pInputText
-          />
-          <p-button
-            (onClick)="togglePasswordVisible()"
-            class="flex"
-            severity="secondary"
-          >
-            <ng-icon *ngIf="!passwordVisible" name="heroEye" />
-            <ng-icon *ngIf="passwordVisible" name="heroEyeSlash" />
-          </p-button>
-        </div>
+        <p-password
+          id="password"
+          size="small"
+          class="w-full"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          dir="rtl"
+          [toggleMask]="true"
+          [feedback]="false"
+        >
+          <ng-template pTemplate="hideicon">
+            <ng-icon
+              class="absolute left-2 top-0 bottom-0 my-auto"
+              name="heroEyeSlash"
+            />
+          </ng-template>
+          <ng-template pTemplate="showicon">
+            <ng-icon
+              class="absolute left-2 top-0 bottom-0 my-auto"
+              name="heroEye"
+            />
+          </ng-template>
+        </p-password>
       </div>
       <a class="mr-auto" routerLink="/forgot-password">
         <p-button styleClass="!p-1" [text]="true" severity="secondary"
           >نسيت كلمة المرور؟</p-button
         >
       </a>
-      <p-button size="small" class="w-full" styleClass="w-full">
+      <p-button class="w-full" styleClass="w-full">
         تسجيل دخول
         <ng-icon name="heroChevronLeft" />
       </p-button>

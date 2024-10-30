@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { PasswordModule } from 'primeng/password';
 import {
   heroArrowRight,
   heroChevronLeft,
@@ -23,6 +24,7 @@ import { NgIf } from '@angular/common';
     InputTextModule,
     InputGroupModule,
     InputGroupAddonModule,
+    PasswordModule,
     NgIf,
   ],
   providers: [
