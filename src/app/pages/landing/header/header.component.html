@@ -1,4 +1,4 @@
-<header class="sticky top-0 w-full bg-white border-b">
+<header class="sticky top-0 w-full bg-white border-b z-50">
   <nav
     class="p-4 w-full max-w-screen-xl mx-auto flex items-center gap-2 justify-between"
   >
@@ -12,9 +12,14 @@
           @for (item of navItems; track $index) {
           <li class="flex w-full">
             <a
-              class="p-2 hover:bg-surface-100 flex w-full rounded-md transition-all ease-in-out"
+              [class]="
+                currentFragment === item.fragment
+                  ? 'p-2 bg-primary text-white rounded-md w-full'
+                  : 'p-2 hover:bg-surface-100 rounded-md w-full'
+              "
+              (click)="setFragment(item.fragment ?? '')"
               [routerLink]="item.href"
-              routerLinkActive=" bg-primary hover:!bg-primary text-white"
+              [fragment]="item.fragment"
               >{{ item.label }}</a
             >
           </li>
@@ -38,9 +43,14 @@
       @for (item of navItems; track $index) {
       <li>
         <a
-          class="p-2"
+          [class]="
+            currentFragment === item.fragment
+              ? 'p-2 bg-primary text-white rounded-md'
+              : 'p-2'
+          "
+          (click)="setFragment(item.fragment ?? '')"
           [routerLink]="item.href"
-          routerLinkActive="bg-primary text-white rounded-md"
+          [fragment]="item.fragment"
           >{{ item.label }}</a
         >
       </li>

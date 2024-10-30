@@ -8,7 +8,8 @@ import { heroBars3, heroChevronLeft } from '@ng-icons/heroicons/outline';
 
 interface INavItem {
   label: string;
-  href: string;
+  href?: string;
+  fragment?: string;
 }
 
 @Component({
@@ -31,28 +32,38 @@ export class HeaderComponent {
     {
       label: 'الرئيسية',
       href: '/',
+      fragment: '',
     },
     {
       label: 'عن المشروع',
-      href: '/about',
+      href: '/',
+      fragment: 'about',
     },
     {
       label: 'مميزات',
-      href: '/features',
+      href: '/',
+      fragment: 'features',
     },
     {
       label: 'تواصل معنا',
-      href: '/contact-us',
+      href: '/',
+      fragment: 'contact-us',
     },
   ];
 
   drawerVisible = false;
+
+  currentFragment = '';
 
   toggleDrawer() {
     this.drawerVisible = !this.drawerVisible;
   }
   hideDrawer() {
     this.drawerVisible = false;
+  }
+
+  setFragment(newFragment: string) {
+    this.currentFragment = newFragment;
   }
 
   @HostListener('window:resize', ['$event'])
