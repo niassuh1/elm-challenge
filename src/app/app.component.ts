@@ -9,25 +9,25 @@ import { HeaderComponent } from './pages/landing/header/header.component';
 const Noir = definePreset(Aura, {
   semantic: {
     primary: {
-      50: '#f0fdf4',
-      100: '#dcfce7',
-      200: '#bbf7d0',
-      300: '#86efac',
-      400: '#4ade80',
-      500: '#22c55e',
-      600: '#16a34a',
-      700: '#15803d',
-      800: '#166534',
-      900: '#14532d',
-      950: '#052e16',
+      50: '#BAFFCC',
+      100: '#6BC190',
+      200: '#43A272',
+      300: '#2F9363',
+      400: '#1B8354',
+      500: '#166D45',
+      600: '#115736',
+      700: '#0C4127',
+      800: '#09361F',
+      900: '#062A17',
+      950: '#021209',
     },
     colorScheme: {
       light: {
         primary: {
-          color: '#22c55e',
+          color: '#1B8354',
           inverseColor: '#ffffff',
-          hoverColor: '#16a34a',
-          activeColor: '#15803d',
+          hoverColor: '#166D45',
+          activeColor: '#115736',
         },
         highlight: {
           background: '{emerald.950}',
