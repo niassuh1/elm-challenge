@@ -1,0 +1,58 @@
+<main class="min-h-screen flex">
+  <div class="flex-[3] hidden md:flex bg-black/70 text-white">Logo</div>
+  <div class="flex-[4] bg-surface-100 flex items-center justify-center p-4">
+    <form class="flex flex-col gap-4 max-w-sm w-full">
+      <div class="flex items-center gap-6">
+        <a routerLink="/">
+          <p-button class="flex">
+            <ng-template pTemplate="icon">
+              <ng-icon name="heroArrowRight" />
+            </ng-template>
+          </p-button>
+        </a>
+        <h3 class="text-2xl text-primary font-medium drop-shadow-sm">
+          تسجيل دخول
+        </h3>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="id">رقم الهوية</label>
+        <input
+          size="small"
+          placeholder="رقم الهوية الخاصة بك"
+          id="id"
+          pInputText
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="passowrd">كلمة المرور</label>
+        <div class="flex items-center gap-2">
+          <input
+            class="flex-1"
+            size="small"
+            [type]="passwordVisible ? 'text' : 'password'"
+            [placeholder]="passwordVisible ? 'كلمة المرور' : '********'"
+            id="passowrd"
+            pInputText
+          />
+          <p-button
+            (onClick)="togglePasswordVisible()"
+            class="flex"
+            severity="secondary"
+          >
+            <ng-icon *ngIf="!passwordVisible" name="heroEye" />
+            <ng-icon *ngIf="passwordVisible" name="heroEyeSlash" />
+          </p-button>
+        </div>
+      </div>
+      <a class="mr-auto" routerLink="/forgot-password">
+        <p-button styleClass="!p-1" [text]="true" severity="secondary"
+          >نسيت كلمة المرور؟</p-button
+        >
+      </a>
+      <p-button size="small" class="w-full" styleClass="w-full">
+        تسجيل دخول
+        <ng-icon name="heroChevronLeft" />
+      </p-button>
+    </form>
+  </div>
+</main>
