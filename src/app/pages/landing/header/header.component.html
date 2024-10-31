@@ -17,7 +17,7 @@
                   ? 'p-2 bg-primary text-white rounded-md w-full'
                   : 'p-2 hover:bg-surface-100 rounded-md w-full'
               "
-              (click)="setFragment(item.fragment ?? '')"
+              (click)="setFragmentandScrollTo(item.fragment ?? '')"
               [routerLink]="item.href"
               [fragment]="item.fragment"
               >{{ item.label }}</a
@@ -45,19 +45,24 @@
         <a
           [class]="
             currentFragment === item.fragment
-              ? 'p-2 bg-primary text-white rounded-md'
-              : 'p-2'
+              ? 'relative p-4 bg-primary text-white rounded-md'
+              : 'relative p-4'
           "
-          (click)="setFragment(item.fragment ?? '')"
+          (click)="setFragmentandScrollTo(item.fragment ?? '')"
           [routerLink]="item.href"
           [fragment]="item.fragment"
-          >{{ item.label }}</a
-        >
+          >{{ item.label }}
+
+          <div
+            *ngIf="currentFragment === item.fragment"
+            class="absolute bg-primary-100 h-1 left-2 right-2 bottom-0"
+          ></div>
+        </a>
       </li>
       }
     </ul>
-    <a routerLink="/login">
-      <p-button size="small">
+    <a routerLink="auth/login">
+      <p-button>
         تسجيل دخول
         <ng-icon name="heroChevronLeft" />
       </p-button>

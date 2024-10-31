@@ -13,6 +13,8 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +28,7 @@ import { NgIf } from '@angular/common';
     InputGroupAddonModule,
     PasswordModule,
     NgIf,
+    ReactiveFormsModule,
   ],
   providers: [
     provideIcons({ heroArrowRight, heroChevronLeft, heroEye, heroEyeSlash }),
@@ -38,4 +41,12 @@ export class LoginComponent {
   togglePasswordVisible() {
     this.passwordVisible = !this.passwordVisible;
   }
+  loginForm = new FormGroup({
+    id: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+    ]),
+    password: new FormControl('', [Validators.required]),
+  });
 }

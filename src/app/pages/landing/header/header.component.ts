@@ -1,10 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DrawerModule } from 'primeng/drawer';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 
 import { heroBars3, heroChevronLeft } from '@ng-icons/heroicons/outline';
+import { NgIf } from '@angular/common';
 
 interface INavItem {
   label: string;
@@ -22,12 +23,21 @@ interface INavItem {
     ButtonModule,
     DrawerModule,
     NgIconComponent,
+    NgIf,
   ],
   providers: [provideIcons({ heroBars3, heroChevronLeft })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  ngOnInit(): void {
+    if (window !== undefined) {
+      const hash = window.location.hash.slice(1);
+      this.currentFragment = window.location.hash.slice(1) === '' ? '' : hash;
+    }
+  }
+
+  scrollTo(elementId: string) {}
   navItems: INavItem[] = [
     {
       label: 'الرئيسية',
@@ -53,7 +63,7 @@ export class HeaderComponent {
 
   drawerVisible = false;
 
-  currentFragment = '';
+  currentFragment: string | undefined = undefined;
 
   toggleDrawer() {
     this.drawerVisible = !this.drawerVisible;
@@ -62,8 +72,15 @@ export class HeaderComponent {
     this.drawerVisible = false;
   }
 
-  setFragment(newFragment: string) {
+  setFragmentandScrollTo(newFragment: string) {
     this.currentFragment = newFragment;
+    if (newFragment === '' && window) {
+      window.scrollTo({ top: 0 });
+    } else {
+      document.getElementById(newFragment)?.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
   }
 
   @HostListener('window:resize', ['$event'])
