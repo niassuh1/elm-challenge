@@ -6,12 +6,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 
 import { heroBars3, heroChevronLeft } from '@ng-icons/heroicons/outline';
 import { NgIf } from '@angular/common';
-
-interface INavItem {
-  label: string;
-  href?: string;
-  fragment?: string;
-}
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -30,39 +25,13 @@ interface INavItem {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+  navigationService: NavigationService = new NavigationService();
+
   ngOnInit(): void {
-    if (window !== undefined) {
-      const hash = window.location.hash.slice(1);
-      this.currentFragment = window.location.hash.slice(1) === '' ? '' : hash;
-    }
+    this.navigationService.onInit();
   }
 
-  scrollTo(elementId: string) {}
-  navItems: INavItem[] = [
-    {
-      label: 'الرئيسية',
-      href: '/',
-      fragment: '',
-    },
-    {
-      label: 'عن المشروع',
-      href: '/',
-      fragment: 'about',
-    },
-    {
-      label: 'مميزات',
-      href: '/',
-      fragment: 'features',
-    },
-    {
-      label: 'تواصل معنا',
-      href: '/',
-      fragment: 'contact-us',
-    },
-  ];
-
   drawerVisible = false;
-
   currentFragment: string | undefined = undefined;
 
   toggleDrawer() {
@@ -70,17 +39,6 @@ export class HeaderComponent implements OnInit {
   }
   hideDrawer() {
     this.drawerVisible = false;
-  }
-
-  setFragmentandScrollTo(newFragment: string) {
-    this.currentFragment = newFragment;
-    if (newFragment === '' && window) {
-      window.scrollTo({ top: 0 });
-    } else {
-      document.getElementById(newFragment)?.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }
   }
 
   @HostListener('window:resize', ['$event'])

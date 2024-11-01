@@ -5,6 +5,7 @@ import { AboutSectionComponent } from './about-section/about-section.component';
 
 import { FeaturesSectionComponent } from './features-section/features-section.component';
 import { ContactUsSectionComponent } from './contact-us-section/contact-us-section.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-landing',
@@ -15,6 +16,7 @@ import { ContactUsSectionComponent } from './contact-us-section/contact-us-secti
     AboutSectionComponent,
     FeaturesSectionComponent,
     ContactUsSectionComponent,
+    FooterComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',

@@ -9,15 +9,17 @@
         [visible]="drawerVisible"
       >
         <ul class="flex flex-col gap-4 mt-3 w-full">
-          @for (item of navItems; track $index) {
+          @for (item of navigationService.navItems; track $index) {
           <li class="flex w-full">
             <a
               [class]="
-                currentFragment === item.fragment
+                navigationService.currentFragment === item.fragment
                   ? 'p-2 bg-primary text-white rounded-md w-full'
                   : 'p-2 hover:bg-surface-100 rounded-md w-full'
               "
-              (click)="setFragmentandScrollTo(item.fragment ?? '')"
+              (click)="
+                navigationService.setFragmentandScrollTo(item.fragment ?? '')
+              "
               [routerLink]="item.href"
               [fragment]="item.fragment"
               >{{ item.label }}</a
@@ -40,15 +42,17 @@
 
     <div class="text-primary-500 font-medium w-0">Logo</div>
     <ul class="hidden md:flex gap-4">
-      @for (item of navItems; track $index) {
+      @for (item of navigationService.navItems; track $index) {
       <li>
         <a
           [class]="
-            currentFragment === item.fragment
+            navigationService.currentFragment === item.fragment
               ? 'relative p-4 bg-primary text-white rounded-md'
               : 'relative p-4'
           "
-          (click)="setFragmentandScrollTo(item.fragment ?? '')"
+          (click)="
+            navigationService.setFragmentandScrollTo(item.fragment ?? '')
+          "
           [routerLink]="item.href"
           [fragment]="item.fragment"
           >{{ item.label }}
