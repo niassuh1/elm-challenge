@@ -5,6 +5,7 @@ import { AuthComponent } from './layout/auth/auth.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ControlDashboardComponent } from './pages/dashboard/control-dashboard/control-dashboard.component';
 
 export const routes: Routes = [
   {
@@ -30,8 +31,12 @@ export const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         component: DashboardComponent,
+      },
+      {
+        path: 'control-dashboard',
+        component: ControlDashboardComponent,
       },
     ],
   },

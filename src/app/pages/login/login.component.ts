@@ -40,7 +40,7 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   login() {
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/dashboard/home');
   }
 
   passwordVisible = false;

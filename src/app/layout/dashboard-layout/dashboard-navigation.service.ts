@@ -13,7 +13,7 @@ export class DashboardNavigationService {
   dashboardNavItems: IDashboardNavItem[] = [
     {
       label: 'الرئيسية',
-      href: '/dashboard',
+      href: '/dashboard/home',
       icon: 'hugeHome02',
     },
     {
