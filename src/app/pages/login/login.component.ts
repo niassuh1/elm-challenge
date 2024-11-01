@@ -11,7 +11,7 @@ import {
   heroEye,
   heroEyeSlash,
 } from '@ng-icons/heroicons/outline';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +37,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  constructor(private router: Router) {}
+
+  login() {
+    this.router.navigateByUrl('/dashboard');
+  }
+
   passwordVisible = false;
   togglePasswordVisible() {
     this.passwordVisible = !this.passwordVisible;
