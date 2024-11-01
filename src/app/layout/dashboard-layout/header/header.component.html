@@ -1,0 +1,63 @@
+<header class="bg-white sticky top-0">
+  <nav
+    class="flex items-center justify-between mx-auto p-4 w-full max-w-screen-xl"
+  >
+    <div class="flex items-center gap-2">
+      <div class="md:hidden">
+        <p-drawer
+          position="right"
+          (onHide)="hideDrawer()"
+          [visible]="drawerVisible"
+        >
+          <ul class="flex flex-col gap-4 w-full">
+            @for (item of dashboardNavigationService.dashboardNavItems; track
+            $index) {
+            <li class="flex w-full">
+              <a
+                class="flex items-center gap-2 relative p-2 rounded-md w-full hover:bg-surface-100 transition-all ease-in-out"
+                routerLinkActive="bg-primary text-white hover:bg-primary"
+                [routerLink]="item.href"
+              >
+                <ng-icon class="text-lg" [name]="item.icon" />
+                <span>
+                  {{ item.label }}
+                </span>
+              </a>
+            </li>
+            }
+          </ul>
+        </p-drawer>
+        <p-button
+          outlined="true"
+          [text]="true"
+          severity="secondary"
+          (onClick)="toggleDrawer()"
+        >
+          <ng-template pTemplate="icon">
+            <ng-icon name="hugeMenu01" />
+          </ng-template>
+        </p-button>
+      </div>
+      <img class="w-14 h-14" src="/images/logo.png" />
+    </div>
+    <ul class="hidden md:flex items-center gap-6">
+      @for (item of dashboardNavigationService.dashboardNavItems; track $index)
+      {
+      <li>
+        <a
+          class="flex items-center gap-2 relative p-4 rounded-md"
+          routerLinkActive="bg-primary text-white after:absolute after:bottom-0 after:left-2 after:right-2 after:h-1 after:bg-primary-100"
+          [routerLink]="item.href"
+        >
+          <ng-icon class="text-lg" [name]="item.icon" />
+          <span>
+            {{ item.label }}
+          </span>
+        </a>
+      </li>
+      }
+    </ul>
+
+    <app-user-menu></app-user-menu>
+  </nav>
+</header>

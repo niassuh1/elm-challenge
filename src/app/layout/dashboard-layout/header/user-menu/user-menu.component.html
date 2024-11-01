@@ -1,0 +1,55 @@
+<div class="flex items-center gap-4">
+  <ng-icon class="text-lg text-primary" name="hugeUserCircle02" />
+  <div class="flex flex-col">
+    <p class="font-medium text-sm">حسين الزاير</p>
+    <p class="text-sm text-muted-color">مدير</p>
+  </div>
+  <p-button
+    (onClick)="toggleDialog()"
+    [text]="true"
+    severity="danger"
+    styleClass="aspect-square"
+  >
+    <ng-icon class="text-lg" name="hugeLogout05" />
+  </p-button>
+  <p-dialog [draggable]="false" [modal]="true" [(visible)]="diaglogVisible">
+    <ng-template class="w-full flex" pTemplate="header">
+      <div class="min-w-96 flex items-center justify-between">
+        <div
+          class="flex items-center justify-center w-8 h-8 bg-surface-100 rounded-full"
+        >
+          <ng-icon name="hugeMessageQuestion" />
+        </div>
+
+        <p-button
+          (onClick)="hideDialog()"
+          [text]="true"
+          severity="secondary"
+          styleClass="aspect-square"
+          ><ng-icon name="hugeCancel01"
+        /></p-button>
+      </div>
+    </ng-template>
+
+    <div class="flex flex-col gap-2">
+      <p class="text-lg font-medium">تأكيد تسجيل الخروج</p>
+      <p class="mb-4">هل ترغب في تأكيد تسجيل خروجك من بوابة إيجاز؟</p>
+      <div class="flex items-center gap-3">
+        <p-button
+          (onClick)="hideDialog()"
+          [outlined]="true"
+          size="small"
+          class="flex-1"
+          styleClass="w-full"
+        >
+          إلغاء
+        </p-button>
+        <a class="flex-1" routerLink="/">
+          <p-button size="small" class="w-full" styleClass="w-full">
+            تسجيل خروج
+          </p-button>
+        </a>
+      </div>
+    </div>
+  </p-dialog>
+</div>
