@@ -1,1 +1,114 @@
-<p>control-dashboard works!</p>
+<main class="grid grid-cols-2 gap-6 w-full mx-auto max-w-screen-xl p-4 mt-8">
+  <div
+    class="col-span-2 flex items-center gap-2 p-1 bg-surface-200 border-surface-300 w-fit rounded-full border mx-auto"
+  >
+    <p-button
+      size="small"
+      styleClass="rounded-full text-primary border"
+      severity="secondary"
+      class="flex"
+    >
+      التفاصيل</p-button
+    >
+    <p-button
+      size="small"
+      styleClass="rounded-full"
+      [text]="true"
+      severity="secondary"
+      class="flex"
+    >
+      التفاصيل</p-button
+    >
+  </div>
+  <div class="col-span-2 bg-white rounded-md flex items-center gap-4 p-6">
+    <div class="bg-primary/15 p-2 rounded-md text-primary">
+      <app-crash-icon-secondary />
+    </div>
+    <div class="flex flex-col">
+      <span class="text-xs text-muted-color">اجمالي </span>
+      <span class="text-lg font-medium">212</span>
+    </div>
+  </div>
+  <div class="col-span-2 bg-white rounded-md flex flex-col gap-6 p-6">
+    <div>
+      <h2 class="text-primary font-medium">الخريطة التفاعلية</h2>
+      <p class="text-xs text-muted-color">
+        يمكنك استعراض التفاصيل في كافة أنحاء خريطة مناطق المملكة
+      </p>
+    </div>
+    <div>
+      <iframe
+        class="rounded-md"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14498.665351145675!2d46.67813944082739!3d24.703994185570586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssa!4v1730544313741!5m2!1sen!2ssa"
+        width="100%"
+        height="297"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+  <div
+    class="col-span-2 lg:col-span-1 bg-white rounded-md flex flex-col gap-6 p-6"
+  >
+    <h2 class="font-medium">هنا عنوان رئيسي</h2>
+
+    <p-chart
+      class="w-full !font-sans"
+      width="100%"
+      height="290"
+      type="bar"
+      [data]="chart1Data"
+      [options]="chartOptions"
+    />
+  </div>
+  <div
+    class="col-span-2 lg:col-span-1 bg-white rounded-md flex flex-col gap-6 p-6"
+  >
+    <h2 class="font-medium">هنا عنوان رئيسي</h2>
+
+    <p-chart
+      class="w-full !font-sans"
+      width="100%"
+      height="290"
+      type="bar"
+      [data]="chart2Data"
+      [options]="chartOptions"
+    />
+  </div>
+  <div
+    class="col-span-2 lg:col-span-1 bg-white rounded-md flex flex-col gap-6 p-6"
+  >
+    <h2 class="font-medium">هنا عنوان رئيسي</h2>
+
+    <p-chart
+      class="w-full !font-sans"
+      width="100%"
+      height="290"
+      type="pie"
+      [data]="chart3Data"
+      [options]="chartOptions"
+    />
+  </div>
+  <div
+    class="col-span-2 lg:col-span-1 bg-white rounded-md flex flex-col gap-6 p-6"
+  >
+    <h2 class="font-medium">هنا عنوان رئيسي</h2>
+    <p-table [value]="tableData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="!bg-surface-100 text-start">النوع</th>
+          <th class="!bg-surface-100 text-start">العدد</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td class="text-start text-sm">{{ data.name }}</td>
+          <td>{{ data.amount }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</main>
